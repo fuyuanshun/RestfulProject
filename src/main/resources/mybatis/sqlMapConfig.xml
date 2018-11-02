@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--别名 在mapper文件中可以不用写路径-->
+    <typeAliases>
+        <package name="com.fys.restful.model" />
+    </typeAliases>
+</configuration>
