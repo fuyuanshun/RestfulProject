@@ -1,28 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 付元顺
-  Date: 2018/11/1
-  Time: 0:56
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
 </head>
 <script type="text/javascript">
     $(function(){
         $("#btn").click(function(){
-             var json = $("#form").serialize();
-            console.info(json);
+            var json = $("#form").serialize();
+            console.info(JSON.stringify(json));
 
             $.ajax({
                 url : "/user/",
                 type : "POST",
-                dataType : "json",
-                // contentType : "application/json",
-                data : JSON.stringify(json),
+                // contentType : "application/json;charset=utf-8",
+                data : json,
                 success : function(data){
                     alert(data.msg);
                 }
@@ -43,11 +36,33 @@
                 }
             })
         });
+
+        $("#uploadBtn").click(function(){
+           /* var file = $("#file").val();
+            if (file === null) {
+                alert("请选择一个MP3文件");
+            }
+            if(!/\.mp3|\.MP3/.test(file)){
+                alert("仅支持上传MP3文件");
+                return;
+            }
+            alert(file);
+            console.info(file);*/
+            $.ajax({
+                url : "/upload/",
+                type : "POST",
+                processData: false,
+                contentType: false,
+                data : new FormData($("#uploadForm")[0]),
+                success : function(data){
+                    alert(data.msg);
+                }
+            })
+        });
     })
 </script>
 <body>
-<div style="margin : 0 auto;">
-    <form method="post" action="" id="form">
+    <form action="" method="post" id="form">
         <input type="text" name="username" id="username" placeholder="用户名"/><br>
         <input type="password" name="password" id="password" placeholder="用户密码"/><br>
         <input type="text" name="sex" id="sex" placeholder="性别"/><br>
@@ -57,10 +72,19 @@
         <input type="text" name="hobby" id="hobby" placeholder="爱好"/><br>
         <button id="btn" type="button">提交</button>
     </form>
+<div>
     查询用户信息:<br>
     <form action="" method="get" id="getInfoForm">
         <input type="text" name="id" id="id" placeholder="输入id查询用户信息">
         <button type="button" id="getInfoBtn">查询</button>
+    </form>
+</div>
+<div>
+    <span>文件上传</span>
+    <form action="/upload/" method="POST" id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="button" id="uploadBtn">上传</button>
+        <%--<input type="submit" value="上传">--%>
     </form>
 </div>
 </body>

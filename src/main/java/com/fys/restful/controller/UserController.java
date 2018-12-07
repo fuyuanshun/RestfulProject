@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -31,5 +33,10 @@ public class UserController {
     public @ResponseBody
     String getInfo(@PathVariable String id) {
         return userService.getInfoById(id);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public @ResponseBody String deleteUser(@PathVariable String id) {
+        return "";
     }
 }

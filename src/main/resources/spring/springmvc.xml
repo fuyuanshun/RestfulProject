@@ -26,6 +26,8 @@
     <!--对静态资源放行-->
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
+    <mvc:resources mapping="/music/**" location="/WEB-INF/music/" />
+
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -33,5 +35,15 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!-- 文件上传下载配置 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="52428800" />
+        <property name="maxInMemorySize" value="52428800" />
+        <property name="defaultEncoding" value="utf-8" />
+    </bean>
 
+    <!-- 文件上传下载配置 -->
+    <!--<bean id="multipartResolver"
+          class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </bean>-->
 </beans>

@@ -3,6 +3,8 @@ package com.fys.restful.dao;
 import com.fys.restful.model.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserMapper {
     /**
@@ -24,4 +26,10 @@ public interface UserMapper {
      * @return
      */
     User getInfoById(String id);
+
+    /**
+     * 获取所有的用户信息
+     * @return
+     */
+   List<User> getUserList();
 }

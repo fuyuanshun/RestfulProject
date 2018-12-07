@@ -12,6 +12,7 @@ public class User {
     private String phone;
     private String address;
     private String hobby;
+    private String registerDate;
 
     public User(){
 
@@ -25,6 +26,14 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.hobby = hobby;
+    }
+
+    public String getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(String registerDate) {
+        this.registerDate = registerDate;
     }
 
     public String getId() {

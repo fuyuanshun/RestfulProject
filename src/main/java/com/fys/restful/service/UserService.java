@@ -1,7 +1,8 @@
 package com.fys.restful.service;
 
 import com.fys.restful.model.User;
-import com.fys.restful.util.ResultUtil;
+
+import java.util.List;
 
 public interface UserService {
     /**

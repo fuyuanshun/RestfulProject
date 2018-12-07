@@ -10,13 +10,14 @@
         <result column="phone" property="phone" />
         <result column="address" property="address" />
         <result column="hobby" property="hobby" />
+        <result column="register_date" property="registerDate" />
     </resultMap>
 
     <!-- 用户注册 -->
     <insert id="addUser" parameterType="User">
-        insert into user (username, password, sex, email, phone, address, hobby)
+        insert into user (username, password, sex, email, phone, address, hobby, register_date)
         values
-        (#{username},#{password}, #{sex}, #{email}, #{phone}, #{address}, #{hobby});
+        (#{username},#{password}, #{sex}, #{email}, #{phone}, #{address}, #{hobby}, now());
     </insert>
 
     <!-- 查询用户是否已经存在 -->
@@ -27,5 +28,10 @@
     <!-- 根据id查询用户信息 -->
     <select id="getInfoById" parameterType="String" resultType="User">
         select * from user where id = #{id};
+    </select>
+
+    <!-- 获取所有的用户信息 -->
+    <select id="getUserList" resultType="User">
+        select * from user;
     </select>
 </mapper>
