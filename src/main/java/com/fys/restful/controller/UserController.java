@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ConcurrentModificationException;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 @Controller
 @RequestMapping("/user")
@@ -35,8 +38,13 @@ public class UserController {
         return userService.getInfoById(id);
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
     public @ResponseBody String deleteUser(@PathVariable String id) {
-        return "";
+        return userService.deleteUser(id);
     }
 }

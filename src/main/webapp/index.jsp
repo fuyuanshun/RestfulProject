@@ -28,10 +28,20 @@
             $.ajax({
                 url : "/user/"+id,
                 type : "GET",
-                async : false,
-                // contentType : "application/json",
                 success : function(data){
                     alert(data.data.username);
+                    console.info(data);
+                }
+            })
+        });
+
+        $("#deleteUserBtn").click(function(){
+            var id = $("#delete_id").val();
+
+            $.ajax({
+                url : "/user/"+id,
+                type : "DELETE",
+                success : function(data){
                     console.info(data);
                 }
             })
@@ -77,6 +87,12 @@
     <form action="" method="get" id="getInfoForm">
         <input type="text" name="id" id="id" placeholder="输入id查询用户信息">
         <button type="button" id="getInfoBtn">查询</button>
+    </form>
+
+    删除用户信息:<br>
+    <form action="" method="delete" id="deleteUserForm">
+        <input type="text" name="id" id="delete_id" placeholder="删除用户的id号">
+        <button type="button" id="deleteUserBtn">删除</button>
     </form>
 </div>
 <div>

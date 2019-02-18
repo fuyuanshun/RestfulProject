@@ -64,4 +64,26 @@ public class UserServiceImpl implements UserService {
         resultUtil = new ResultUtil("400", "id不能为空", null);
         return JSON.toJSONString(resultUtil);
     }
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @Override
+    public String deleteUser(String id) {
+        ResultUtil resultUtil;
+        if (null != id && !id.equals("") && id.matches("^\\d+$")) {
+            int i = userDao.deleteUser(id);
+            if (i == 0) {
+                resultUtil = new ResultUtil("406", "没有找到对应id的用户", null);
+                return JSON.toJSONString(resultUtil);
+            }
+            resultUtil = new ResultUtil("200", "删除成功", null);
+            return JSON.toJSONString(resultUtil);
+        }
+        resultUtil = new ResultUtil("200", "id只能为数字", null);
+
+        return JSON.toJSONString(resultUtil);
+    }
 }

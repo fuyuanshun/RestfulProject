@@ -32,4 +32,9 @@ public interface UserMapper {
      * @return
      */
    List<User> getUserList();
+
+    /**
+     * 删除用户
+     */
+    int deleteUser(String id);
 }

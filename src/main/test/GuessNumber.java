@@ -52,6 +52,7 @@ public class GuessNumber {
                     flag = false;
                 } else {
                     System.out.println("游戏继续:");
+                    count = 0 ;
                     randomNumber = -1;
                 }
             }

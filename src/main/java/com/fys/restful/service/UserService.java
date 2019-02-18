@@ -24,4 +24,11 @@ public interface UserService {
      * @return
      */
     String getInfoById(String id);
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    String deleteUser(String id);
 }
